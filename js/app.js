@@ -1,7 +1,62 @@
 //in this section i try to highlight navbar contents with js it needs to improve i will try on this
 
-/*
+const navbar = document.getElementById("navbar");
 
+const ul = document.createElement('ul');
+ul.classList.add("navbar");
+
+
+const li1 = document.createElement('li');
+const li2 = document.createElement('li');
+const li3 = document.createElement('li');
+const li4 = document.createElement('li');
+
+
+const a1 = document.createElement('a');
+const a2 = document.createElement('a');
+const a3 = document.createElement('a');
+const a4 = document.createElement('a');
+
+
+li1.classList.add("navbar-content");
+li2.classList.add("navbar-content");
+li3.classList.add("navbar-content");
+li4.classList.add("navbar-content");
+
+ul.appendChild(li1);
+ul.appendChild(li2);
+ul.appendChild(li3);
+ul.appendChild(li4);
+
+li1.setAttribute('id', 'section1');
+li2.setAttribute('id', 'section2');
+li3.setAttribute('id', 'section3');
+li4.setAttribute('id', 'section4');
+
+a1.href = '#sec1';
+a2.href = '#sec2';
+a3.href = '#sec3';
+a4.href = '#sec4';
+
+
+a1.classList.add("link");
+a2.classList.add("link");
+a3.classList.add("link");
+a4.classList.add("link");
+
+a1.textContent = "Section 1";
+a2.textContent = "Section 2";
+a3.textContent = "Section 3";
+a4.textContent = "Section 4";
+
+li1.appendChild(a1);
+li2.appendChild(a2);
+li3.appendChild(a3);
+li4.appendChild(a4);
+
+navbar.appendChild(ul);
+
+/*
 const navbar = document.querySelector('.navbar');
 function highlight(event) {
     const target = event.target;
@@ -31,8 +86,6 @@ navbar.addEventListener('mouseleave', nonHighlight);
 */
 
 window.onscroll = function() {myFunction()};
-
-var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
 
 function myFunction() {
