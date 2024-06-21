@@ -1,0 +1,1 @@
+I know it doesn't have good performance especially in the creating navbar section. I'will work on this to fix it. I have some ideas using for loops for every of element. 
