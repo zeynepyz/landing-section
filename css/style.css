@@ -1,0 +1,63 @@
+.navbar {
+    display: grid;
+    grid-template-rows: 35px 35px 35px 35px;
+    background-color: rgb(255, 255, 254);
+    padding: 6px;
+}
+
+.navbar-content {
+    display: flex;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.link {
+    text-decoration: none;
+    color: #4d4848;
+}
+
+
+
+.sticky + .content {
+    padding-top: 60px;
+  }
+
+.sticky {
+    position: fixed;
+    top: 0px;
+    width: 98%;
+}
+
+.section-container {
+    display: grid;
+    grid-template-rows: 800px 800px 800px 800px;
+    justify-content: center;
+    background-color: rgba(250, 235, 215, 0.671);
+    margin: 5px;
+    padding: 10px;
+}
+
+.section {
+    padding: 5px;
+    font-size: larger;
+}
+
+.active {
+    background-color: #d67f3c;
+}
+
+@media(min-width:500px) {
+    .navbar{
+        display: flex;
+        justify-content: end;
+        margin: 1px;
+        height: 40px;
+        text-align: center;
+      }
+    }
+
+    .section {
+        padding: 50px;
+    }
