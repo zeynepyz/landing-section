@@ -31,8 +31,6 @@
 }
 
 .section-container {
-    display: grid;
-    grid-template-rows: 800px 800px 800px 800px;
     justify-content: center;
     background-color: rgba(250, 235, 215, 0.671);
     margin: 5px;
@@ -60,4 +58,13 @@
 
     .section {
         padding: 50px;
+    }
+
+    .section-container {
+        display: grid;
+        grid-template-rows: 800px 800px 800px 800px;
+        justify-content: center;
+        background-color: rgba(250, 235, 215, 0.671);
+        margin: 5px;
+        padding: 10px;
     }

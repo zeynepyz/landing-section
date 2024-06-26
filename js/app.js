@@ -1,93 +1,45 @@
-//in this section i try to highlight navbar contents with js it needs to improve i will try on this
+const navbar = document.getElementById('navbar');
 
-const navbar = document.getElementById("navbar");
+// creating new array so it will be easy for creating li elements and adding them their classes or ids
+const navSections = [
+  { name: 'Section 1', id: 'section1', secId: 'sec1'},
+  { name: 'Section 2', id: 'section2', secId: 'sec2'},
+  { name: 'Section 3', id: 'section3', secId: 'sec3'},
+  { name: 'Section 4', id: 'section4', secId: 'sec4'}
+];
 
-const ul = document.createElement('ul');
-ul.classList.add("navbar");
+// for every navSection item it will create a new li element
+navSections.forEach(navSection => {
+  const li = document.createElement('li');
+  // then add navbar-content class to that element
+  li.classList.add('navbar-content');
+  li.textContent = navSection.name;
+  // li element's id
+  li.id = navSection.id;
+  // lastly this function append this li element in the ul element that we named navbar
+  navbar.appendChild(li);
 
+  // in this block we crate event listener for each li element because we want to go through the sections by clicking section's number in the navbar
+  li.addEventListener('click', () => {
+    const section = document.getElementById(navSection.secId);
+    const sectionTop = section.offsetTop;
 
-const li1 = document.createElement('li');
-const li2 = document.createElement('li');
-const li3 = document.createElement('li');
-const li4 = document.createElement('li');
+    // if we click the section number it will scroll smoothly to the right section
+    window.scrollTo({
+      top: sectionTop,
+      behavior: 'smooth' // Smooth scrolling
+    });
+  });
+});
 
-
-const a1 = document.createElement('a');
-const a2 = document.createElement('a');
-const a3 = document.createElement('a');
-const a4 = document.createElement('a');
-
-
-li1.classList.add("navbar-content");
-li2.classList.add("navbar-content");
-li3.classList.add("navbar-content");
-li4.classList.add("navbar-content");
-
-ul.appendChild(li1);
-ul.appendChild(li2);
-ul.appendChild(li3);
-ul.appendChild(li4);
-
-li1.setAttribute('id', 'section1');
-li2.setAttribute('id', 'section2');
-li3.setAttribute('id', 'section3');
-li4.setAttribute('id', 'section4');
-
-a1.href = '#sec1';
-a2.href = '#sec2';
-a3.href = '#sec3';
-a4.href = '#sec4';
-
-
-a1.classList.add("link");
-a2.classList.add("link");
-a3.classList.add("link");
-a4.classList.add("link");
-
-a1.textContent = "Section 1";
-a2.textContent = "Section 2";
-a3.textContent = "Section 3";
-a4.textContent = "Section 4";
-
-li1.appendChild(a1);
-li2.appendChild(a2);
-li3.appendChild(a3);
-li4.appendChild(a4);
-
-navbar.appendChild(ul);
-
-/*
-const navbar = document.querySelector('.navbar');
-function highlight(event) {
-    const target = event.target;
-        if (target.textContent.endsWith('1')) {
-            navbars[0].setAttribute('style', 'background-color: gray');
-        } else if (target.textContent.endsWith('2')) {
-            navbars[1].setAttribute('style', 'background-color: gray');
-        }
-        else if (target.textContent.endsWith('3')) {
-            navbars[2].setAttribute('style', 'background-color: gray');
-        }
-        else if (target.textContent.endsWith('4')) {
-            navbars[3].setAttribute('style', 'background-color: gray');
-        }
+function makeActive(id) {
+  id.classList.add("active");
 }
-
-
-function nonHighlight() {
-    navbars[0].setAttribute('style', 'background-color: white');
-    navbars[1].setAttribute('style', 'background-color: white');
-    navbars[2].setAttribute('style', 'background-color: white');
-    navbars[3].setAttribute('style', 'background-color: white');
-}
-
-navbar.addEventListener('mouseover', highlight);
-navbar.addEventListener('mouseleave', nonHighlight);
-*/
-
+// this function is here for sticky navbar
 window.onscroll = function() {myFunction()};
 var sticky = navbar.offsetTop;
 
+// as long as the screen is scrolled on the y-axis navbar will have sticky class
 function myFunction() {
   if (window.scrollY >= sticky) {
     navbar.classList.add("sticky")
@@ -99,34 +51,36 @@ function myFunction() {
 const sections = document.querySelectorAll('.section')
 const navbars = document.querySelectorAll('.navbar-content');
 
+// this function will add active class for navbar elements
+// it will change the element's color so it will be highlighted
 function makeActive(){
   for (const section of sections) {
       const box = section.getBoundingClientRect();
-      //Find a value that works best, but 150 seems to be a good start.
-      if (box.top <= 2450 && box.bottom >= 2500) {
-      //apply active state on current section and corresponding Nav link
+      if (box.top <= 2450 && box.bottom >= 2450) {
         document.getElementById("section1").classList.add("active");
-      } else {
+        document.getElementById("section2").classList.remove("active");
+        document.getElementById("section3").classList.remove("active");
+        document.getElementById("section4").classList.remove("active");
+      } else if (box.top <= 2000 && box.bottom >= 1650) {
         document.getElementById("section1").classList.remove("active");
-      }
-      if (box.top <= 1700 && box.bottom >= 1650) {
+        document.getElementById("section4").classList.remove("active");
+        document.getElementById("section3").classList.remove("active");
         document.getElementById("section2").classList.add("active");
+      } else if (box.top <= 850 && box.bottom >= 900) {
+        document.getElementById("section2").classList.remove("active");
+        document.getElementById("section1").classList.remove("active");
+        document.getElementById("section4").classList.remove("active");
+        document.getElementById("section3").classList.add("active");
+      } else if (box.top <= 80 && box.bottom >= 100) {
+        document.getElementById("section2").classList.remove("active");
+        document.getElementById("section1").classList.remove("active");
+        document.getElementById("section3").classList.remove("active");
+        document.getElementById("section4").classList.add("active");
       } else {
-          document.getElementById("section2").classList.remove("active");
-        }
-      if (box.top <= 850 && box.bottom >= 900) {
-          document.getElementById("section3").classList.add("active");
-      } else {
-            document.getElementById("section3").classList.remove("active");
-          }
-      if (box.top <= 90 && box.bottom >= 100) {
-            document.getElementById("section4").classList.add("active");
-      } else {
-              document.getElementById("section4").classList.remove("active");
-            }
-
+        // when we scroll to the top of the page, section 1 higlight still showed.
+        // but i don't want it to be highlighted when it's top of the page because it's navbar's part.
+          document.getElementById("section1").classList.remove("active");
+      }
    }
 }
-
-
-document.addEventListener("scroll", function() { makeActive();});
+document.addEventListener("scroll", makeActive);
